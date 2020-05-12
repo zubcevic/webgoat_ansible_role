@@ -1,7 +1,8 @@
-WebGoat (ansible role)
+webgoat-ansible-role
 =========
 
 [![Build Status](https://travis-ci.org/zubcevic/webgoat-ansible-role.svg)](https://travis-ci.org/zubcevic/webgoat-ansible-role)
+
 The **webgoat** role for Ansible let's you install and run WebGoat. You can choose a native install based on an available Java runtime or a Docker based install. 
 **The role is still under development**
 
@@ -27,7 +28,7 @@ Here is an example for installing WebGoat, using a playbook (webgoat-playbook.ya
 
     - hosts: servers
       roles:
-         - role: webgoat
+         - role: webgoat-ansible-role
          
     ansible-playbook -t native webgoat-playbook.yaml
 
