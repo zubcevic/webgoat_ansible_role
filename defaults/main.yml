@@ -1,0 +1,4 @@
+---
+# defaults file for webgoat
+webgoat_basedir: "webgoat" 
+webgoat_version: "8.0.0.M26"

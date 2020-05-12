@@ -1,0 +1,24 @@
+---
+# tasks file for webgoat
+- name: Create basedir for webgoat
+  file:
+    path: "{{ webgoat_basedir }}"
+    state: directory
+    mode: "0775"
+  tags:
+     - native
+- name: Download  webgoat jar
+  get_url:
+    url: "https://github.com/WebGoat/WebGoat/releases/download/v{{ webgoat_version }}/webgoat-server-{{ webgoat_version }}.jar"
+    dest: "{{ webgoat_basedir }}/webgoat.jar" 
+    mode: "0755"
+  tags:
+     - native
+- name: Download  webwolf jar
+  get_url:
+    url: "https://github.com/WebGoat/WebGoat/releases/download/v{{ webgoat_version }}/webwolf-{{ webgoat_version }}.jar" 
+    dest: "{{ webgoat_basedir }}/webwolf.jar"
+    mode: " 0755"
+  tags:
+     - native 
+
