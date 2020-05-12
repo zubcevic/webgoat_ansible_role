@@ -19,7 +19,9 @@ There are no mandatory variables.
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+For the **native** install make sure you have Java installed with e.g. 
+    
+    ansible-galaxy install lean_delivery.java
 
 Example Playbook
 ----------------
