@@ -23,14 +23,14 @@
     mode: " 0755"
   tags:
      - native
-- name: kill all running webgoat.jar
-  run_once: true
-  shell:  "pkill -9 -f webgoat.jar; rm webgoat.log; rm webwolf.log"
-  args:
-    chdir: "{{ webgoat_basedir }}"
-  tags:
-    - native
-  ignore_errors: true
+#- name: kill all running webgoat.jar
+#  run_once: true
+#  shell:  "pkill -9 -f webgoat.jar; rm webgoat.log; rm webwolf.log"
+#  args:
+#    chdir: "{{ webgoat_basedir }}"
+#  tags:
+#    - native
+#  ignore_errors: true
 - name: start webgoat.jar
   shell: "nohup java -jar webgoat.jar > webgoat.log &"
   args:
