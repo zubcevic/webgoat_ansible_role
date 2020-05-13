@@ -11,6 +11,12 @@ Requirements
 
 A host with Linux on it and either a Java Runtime or a Docker runtime.
 
++ Native install
+    + Java 11+
+    + Free ports: 8080, 9090, 9001
++ Docker install
+    + Free ports: 8080, 9090
+
 Role Variables
 --------------
 
@@ -30,14 +36,16 @@ Here is an example for installing WebGoat, using a playbook (webgoat-playbook.ya
 
     - hosts: servers
       roles:
-         - role: webgoat-ansible-role
+         - role: zubcevic.webgoat-ansible-role
+
+From commandline:
          
     ansible-playbook -t native webgoat-playbook.yaml
 
 License
 -------
 
-TBD.
+MIT
 
 Author Information
 ------------------
