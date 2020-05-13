@@ -23,7 +23,9 @@ install:
 
 script:
   # Basic role syntax check
-  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
+  - ansible-playbook -c local -i tests/inventory -t native tests/test.yml
+  - ls tests/webgoat/webgoat.jar
+  - ls tests/webgoat/webwolf.jar 
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
