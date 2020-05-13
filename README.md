@@ -50,4 +50,4 @@ MIT
 Author Information
 ------------------
 
-René Zubcevic
+[René Zubcevic](https://github.com/zubcevic)
