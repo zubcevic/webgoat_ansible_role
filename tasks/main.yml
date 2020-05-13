@@ -24,10 +24,18 @@
   tags:
      - native
 - name: kill all running webgoat.jar
-  shell:  pkill -9 -f webgoat.jar
+  run_once: true
+  shell:  "pkill -9 -f webgoat.jar; rm webgoat.log; rm webwolf.log"
+  args:
+    chdir: "{{ webgoat_basedir }}"
+  tags:
+    - native
   ignore_errors: true
 - name: start webgoat.jar
-  shell: "cd {{ webgoat_basedir }} ; nohup java -jar webgoat.jar > webgoat.log &"
+  shell: "nohup java -jar webgoat.jar > webgoat.log &"
+  args:
+    chdir: "{{ webgoat_basedir }}"
+    creates: webgoat.log
   tags:
     - native
 - name: wait 30 sec for port 8080
@@ -41,6 +49,9 @@
   tags:
     - native
 - name: start webwolf.jar
-  shell: "cd {{ webgoat_basedir }} ; nohup java -jar webwolf.jar > webwolf.log &"
+  shell: "nohup java -jar webwolf.jar > webwolf.log &"
+  args:
+    chdir: "{{ webgoat_basedir }}"
+    creates: webwolf.log
   tags:
     - native
