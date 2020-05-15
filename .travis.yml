@@ -1,17 +1,23 @@
 ---
 language: python
 python: "3.6"
+
 sudo: required
+
 services:
   - docker
 
+addons:
+  apt:
+    packages:
+    - python-pip
+
 install:
   - pip install -r requirements.txt
-  # Create ansible.cfg with correct roles_path
+  - ansible --version
   - printf '[defaults]\nroles_path=../' >ansible.cfg
 
 script:
-  # Basic role syntax check
   - ansible-playbook -c local -i tests/inventory tests/test.yml
   - ls tests/webgoat/webgoat.jar
   - ls tests/webgoat/webwolf.jar 
