@@ -1,53 +1,6 @@
 ---
 # tasks file for webgoat
-- name: Create basedir for webgoat
-  file:
-    path: "{{ webgoat_basedir }}"
-    state: directory
-    mode: "0775"
-  tags:
-     - native
-- name: Download  webgoat jar
-  get_url:
-    url: "https://github.com/WebGoat/WebGoat/releases/download/v{{ webgoat_version }}/webgoat-server-{{ webgoat_version }}.jar"
-    checksum: "{{ webgoat_hash }}"
-    dest: "{{ webgoat_basedir }}/webgoat.jar"
-    mode: "0755"
-  tags:
-     - native
-- name: Download  webwolf jar
-  get_url:
-    url: "https://github.com/WebGoat/WebGoat/releases/download/v{{ webgoat_version }}/webwolf-{{ webgoat_version }}.jar"
-    checksum: "{{ webwolf_hash }}"
-    dest: "{{ webgoat_basedir }}/webwolf.jar"
-    mode: "0755"
-  tags:
-     - native
-- name: Deploy stop script
-  template:
-    src: "stopgoat.j2"
-    dest: "{{ webgoat_basedir }}/stopgoat.sh"
-    mode: "0755"
-  tags:
-    - native
-- name: Deploy start script
-  template:
-    src: "startgoat.j2"
-    dest: "{{ webgoat_basedir }}/startgoat.sh"
-    mode: "0755"
-  tags:
-    - native
-- name: start webgoat.jar
-  shell: "nohup java -jar webgoat.jar > webgoat.log &"
-  args:
-    chdir: "{{ webgoat_basedir }}"
-    creates: webgoat.log
-  tags:
-    - native
-- name: start webwolf.jar
-  shell: "sleep 20; nohup java -jar webwolf.jar > webwolf.log &"
-  args:
-    chdir: "{{ webgoat_basedir }}"
-    creates: webwolf.log
-  tags:
-    - native
+- include: docker.yml
+  when: webgoat_installtype == "docker"
+- include: native.yml
+  when: webgoat_installtype == "native"
