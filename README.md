@@ -40,7 +40,11 @@ Here is an example for installing WebGoat, using a playbook (webgoat-playbook.ya
 
 From commandline:
          
-    ansible-playbook -t native webgoat-playbook.yaml
+    ansible-playbook webgoat-playbook.yaml
+
+or:
+
+    ansible-playbook -e "webgoat_installtype=docker" webgoat-playbook.yaml
 
 License
 -------
