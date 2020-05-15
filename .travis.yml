@@ -1,26 +1,11 @@
 ---
-services:
-- docker
 language: python
-python: "2.7"
-
-# Use the new container infrastructure
-sudo: false
-
-# Install ansible
-addons:
-  apt:
-    packages:
-    - python-pip
+python: "3.6"
+services:
+  - docker
 
 install:
-  # Install ansible
-  - pip install ansible
-  - pip install docker-py
-
-  # Check ansible version
-  - ansible --version
-
+  - pip install -r requirements.txt
   # Create ansible.cfg with correct roles_path
   - printf '[defaults]\nroles_path=../' >ansible.cfg
 
