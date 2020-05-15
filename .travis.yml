@@ -21,7 +21,7 @@ script:
   - ansible-playbook -c local -i tests/inventory tests/test.yml
   - ls tests/webgoat/webgoat.jar
   - ls tests/webgoat/webwolf.jar 
-  - tests/webgoat/stopgoat.sh
+  - tests/webgoat/stopgoat.sh || true
   - ansible-playbook -c local -i tests/inventory -e "webgoat_installtype=docker" tests/test.yml
 
 notifications:
