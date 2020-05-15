@@ -14,6 +14,7 @@ addons:
 install:
   # Install ansible
   - pip install ansible
+  - pip install -r requirements.txt
 
   # Check ansible version
   - ansible --version
@@ -26,6 +27,8 @@ script:
   - ansible-playbook -c local -i tests/inventory -t native tests/test.yml
   - ls tests/webgoat/webgoat.jar
   - ls tests/webgoat/webwolf.jar 
+  - tests/webgoat/stopgoat.sh
+  - ansible-playbook -c local -i tests/inventory -t docker tests/test.yml
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

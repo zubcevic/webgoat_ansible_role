@@ -51,3 +51,15 @@
     creates: webwolf.log
   tags:
     - native
+- name: Start WebGoat as docker
+  docker_container:
+    name: webgoat
+    image: webgoat/goatandwolf
+    state: started
+    ports:
+      - "8080:8080"
+      - "9090:9090"
+    env:
+      TZ: "Europe/Amsterdam"
+    tags:
+      - docker
