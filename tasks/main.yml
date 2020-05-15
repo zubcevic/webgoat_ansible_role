@@ -20,17 +20,23 @@
     url: "https://github.com/WebGoat/WebGoat/releases/download/v{{ webgoat_version }}/webwolf-{{ webgoat_version }}.jar"
     checksum: "{{ webwolf_hash }}"
     dest: "{{ webgoat_basedir }}/webwolf.jar"
-    mode: " 0755"
+    mode: "0755"
   tags:
      - native
-#- name: kill all running webgoat.jar
-#  run_once: true
-#  shell:  "pkill -9 -f webgoat.jar; rm webgoat.log; rm webwolf.log"
-#  args:
-#    chdir: "{{ webgoat_basedir }}"
-#  tags:
-#    - native
-#  ignore_errors: true
+- name: Deploy stop script
+  template:
+    src: "stopgoat.j2"
+    dest: "{{ webgoat_basedir }}/stopgoat.sh"
+    mode: "0755"
+  tags:
+    - native
+- name: Deploy start script
+  template:
+    src: "startgoat.j2"
+    dest: "{{ webgoat_basedir }}/startgoat.sh"
+    mode: "0755"
+  tags:
+    - native
 - name: start webgoat.jar
   shell: "nohup java -jar webgoat.jar > webgoat.log &"
   args:
@@ -38,18 +44,8 @@
     creates: webgoat.log
   tags:
     - native
-- name: wait 30 sec for port 8080
-  shell: bash -c 'until printf "" 2>>/dev/null >>/dev/tcp/localhost/8080; do sleep 1; done' & sleep 30; (kill $! || true)
-  ignore_errors: true
-  tags:
-    - native
-- name: wait 3 sec for port 9001
-  shell: bash -c 'until printf "" 2>>/dev/null >>/dev/tcp/localhost/9001; do sleep 1; done' & sleep 3; (kill $! || true)
-  ignore_errors: true
-  tags:
-    - native
 - name: start webwolf.jar
-  shell: "nohup java -jar webwolf.jar > webwolf.log &"
+  shell: "sleep 20; nohup java -jar webwolf.jar > webwolf.log &"
   args:
     chdir: "{{ webgoat_basedir }}"
     creates: webwolf.log

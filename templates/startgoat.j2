@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cd {{ webgoat_basedir }}
+
+nohup java -jar webgoat.jar > webgoat.log &
+
+sleep 20
+#timeout 30 bash -c 'until printf "" 2>>/dev/null >>/dev/tcp/localhost/8080; do sleep 1; done'
+
+nohup java -jar webwolf.jar > webwolf.log &
+sleep 5

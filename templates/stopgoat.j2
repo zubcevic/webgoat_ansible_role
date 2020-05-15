@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd {{ webgoat_basedir }}
+pkill -9 -f webgoat.jar
+pkill -9 -f webwolf.jar
+rm webgoat.log
+rm webwolf.log
