@@ -6,7 +6,7 @@
     image: webgoat/goatandwolf
     state: started
     ports:
-      - "8080:8080"
-      - "9090:9090"
+      - "{{ webgoat_port }}:8080"
+      - "{{ webwolf_port }}:9090"
     env:
-      TZ: "Europe/Amsterdam"
+      TZ: "{{ webgoat_timezone }}"
