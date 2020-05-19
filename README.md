@@ -16,10 +16,8 @@ A host with Linux on it and either a Java Runtime or a Docker runtime.
     + Free ports: 8080, 9090, 9001
 + Docker install
     + Free ports: 8080, 9090
-    
-Java can be installed using other Ansible packages or manually, e.g.: 
 
-	sudo apt install openjdk-11-jre-headless -y
+Java can be installed using variables. See [localsecure.yml](tests/localsecure.yml).
 
 
 Role Variables
@@ -30,10 +28,9 @@ There are no mandatory variables.
 Dependencies
 ------------
 
-For the **native** install make sure you have Java installed with e.g. 
+For the **native** install make sure you have Java installed or install it with the use of variables. See tests/localsecure.yml 
+For the **docker** install supply the **webgoat_installtype** variable with value **docker** and have docker installed and on the ansible host make sure you have docker-py installed. 
     
-    ansible-galaxy install lean_delivery.java
-
 Example Playbook
 ----------------
 

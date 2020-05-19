@@ -30,7 +30,7 @@
     mode: "0775"
   when: webgoat_downloadlocaljre == "yes"
 - name: unzip JRE
-  shell: "tar -xvzf jre.tar.gz -C jre --strip-components=1"
+  shell: "tar -xvzf jre.tar.gz -C jre --strip-components=1" # noqa 305
   args:
     chdir: "{{ webgoat_basedir }}"
     creates: jre/bin/java
@@ -47,7 +47,7 @@
     dest: "{{ webgoat_basedir }}/startgoat.sh"
     mode: "0755"
 - name: start webgoat.jar
-  shell: "WEBGOAT_SSLENABLED={{ webgoat_usehttps }} WEBGOAT_PORT={{ webgoat_port }} TZ={{ webgoat_timezone }} PATH={{ webgoat_basedir }}/jre/bin:$PATH nohup java -jar webgoat.jar > webgoat.log &"
+  shell: "WEBGOAT_SSLENABLED={{ webgoat_usehttps }} WEBGOAT_PORT={{ webgoat_port }} TZ={{ webgoat_timezone }} PATH={{ webgoat_basedir }}/jre/bin:$PATH nohup java -jar webgoat.jar > webgoat.log &" # noqa 204
   args:
     chdir: "{{ webgoat_basedir }}"
     creates: webgoat.log
