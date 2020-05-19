@@ -16,6 +16,11 @@ A host with Linux on it and either a Java Runtime or a Docker runtime.
     + Free ports: 8080, 9090, 9001
 + Docker install
     + Free ports: 8080, 9090
+    
+Java can be installed using other Ansible packages or manually, e.g.: 
+
+	sudo apt install openjdk-11-jre-headless -y
+
 
 Role Variables
 --------------
@@ -45,6 +50,11 @@ From commandline:
 or:
 
     ansible-playbook -e "webgoat_installtype=docker" webgoat-playbook.yaml
+    
+Example with JRE 11 local java installation and HTTPS for webgoat:
+
+	ansible-playbook -c local tests/localsecure.yml
+	
 
 License
 -------
