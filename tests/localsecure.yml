@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  roles:
+    - role: webgoat-ansible-role
+      webgoat_port: "8443"
+      webgoat_downloadlocaljre: "yes"
+      webgoat_usehttps: "true"

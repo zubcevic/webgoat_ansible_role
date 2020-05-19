@@ -2,10 +2,16 @@
 
 cd {{ webgoat_basedir }}
 
-nohup TZ={{ webgoat_timezone }} java -Dfile.encoding=UTF-8 -jar webgoat.jar > webgoat.log &
+if [ -f jre.tar.gz ]; then
+
+export PATH=$PWD/jre/bin:$PATH
+
+fi
+
+WEBGOAT_SSLENABLED={{ webgoat_usehttps }} WEBGOAT_PORT={{ webgoat_port }} TZ={{ webgoat_timezone }} nohup java -Dfile.encoding=UTF-8 -jar webgoat.jar > webgoat.log &
 
 sleep 20
 #timeout 30 bash -c 'until printf "" 2>>/dev/null >>/dev/tcp/localhost/{{ webgoat_port }}; do sleep 1; done'
 
-nohup TZ={{ webgoat_timezone }} java -jar webwolf.jar > webwolf.log &
+nohup java -jar webwolf.jar > webwolf.log &
 sleep 5

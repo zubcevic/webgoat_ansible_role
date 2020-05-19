@@ -1,0 +1,6 @@
+---
+- hosts: webgoat
+  roles:
+    - role: webgoat-ansible-role
+      webgoat_version: "8.0.0.M14"
+      webgoat_hash: "sha256:26a82ba62f6db7d7ca75576886e16e34894fa1233c32fd4d6077416606b04246"
