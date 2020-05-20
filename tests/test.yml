@@ -1,4 +1,4 @@
 ---
 - hosts: localhost
   roles:
-    - webgoat-ansible-role
+    - webgoat_ansible_role
