@@ -1,7 +1,7 @@
-webgoat-ansible-role
+webgoat_ansible_role
 =========
 
-[![Build Status](https://travis-ci.org/zubcevic/webgoat-ansible-role.svg)](https://travis-ci.org/zubcevic/webgoat-ansible-role)
+[![Build Status](https://travis-ci.org/zubcevic/webgoat_ansible_role.svg)](https://travis-ci.org/zubcevic/webgoat_ansible_role)
 
 The **webgoat** role for Ansible let's you install and run WebGoat. You can choose a native install based on an available Java runtime or a Docker based install. 
 **The role is still under development**
@@ -17,7 +17,7 @@ A host with Linux on it and either a Java Runtime or a Docker runtime.
 + Docker install
     + Free ports: 8080, 9090
 
-Java can be installed using variables. See [localsecure.yml](tests/localsecure.yml).
+Java can be installed using variables. See [WebGoat role blog](https://zubcevicdotcom.wordpress.com/owasp-webgoat/deploying-webgoat-using-ansible/).
 
 
 Role Variables
@@ -38,7 +38,7 @@ Here is an example for installing WebGoat, using a playbook (webgoat-playbook.ya
 
     - hosts: servers
       roles:
-         - role: zubcevic.webgoat-ansible-role
+         - role: zubcevic.webgoat_ansible_role
 
 From commandline:
          
