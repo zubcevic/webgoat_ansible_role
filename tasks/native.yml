@@ -47,12 +47,12 @@
     dest: "{{ webgoat_basedir }}/startgoat.sh"
     mode: "0755"
 - name: start webgoat.jar
-  shell: "export PATH={{ webgoat_basedir }}/jre/bin:$PATH; WEBGOAT_SSLENABLED={{ webgoat_usehttps }} WEBGOAT_PORT={{ webgoat_port }} TZ={{ webgoat_timezone }} nohup java -jar webgoat.jar > webgoat.log &" # noqa 204
+  shell: "export PATH=jre/bin:$PATH; WEBGOAT_SSLENABLED={{ webgoat_usehttps }} WEBGOAT_PORT={{ webgoat_port }} TZ={{ webgoat_timezone }} nohup java -jar webgoat.jar > webgoat.log &" # noqa 204
   args:
     chdir: "{{ webgoat_basedir }}"
     creates: webgoat.log
 - name: start webwolf.jar
-  shell: "sleep 20; export PATH={{ webgoat_basedir }}/jre/bin:$PATH; nohup java -jar webwolf.jar > webwolf.log &"
+  shell: "sleep 20; export PATH=jre/bin:$PATH; nohup java -jar webwolf.jar > webwolf.log &"
   args:
     chdir: "{{ webgoat_basedir }}"
     creates: webwolf.log
