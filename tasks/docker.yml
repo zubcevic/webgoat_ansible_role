@@ -3,7 +3,7 @@
 - name: Start WebGoat as docker
   docker_container:
     name: webgoat
-    image: webgoat/goatandwolf
+    image: webgoat/goatandwolf:v{{ webgoat_version }}
     state: started
     ports:
       - "{{ webgoat_port }}:8080"
