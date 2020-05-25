@@ -1,9 +1,9 @@
 ---
 # defaults file for webgoat
 webgoat_basedir: "webgoat"
-webgoat_version: "8.0.0.M26"
-webgoat_hash: "sha256:26a82ba62f6db7d7ca75576886e16e34894fa1233c32fd4d6077416606b04246"
-webwolf_hash: "sha256:901a2b98f5c3d6f94cdf98cbdfa1e792a8bd630212d873abaf30bb01a97cef2b"
+webgoat_version: "8.1.0"
+webgoat_hash: "sha256:f6d260187d9380ab77180337db2c09c8b88799ea5850a4f13ed8ebc551bbdaf2"
+webwolf_hash: "sha256:1486b44b1cf5d939de96f98c996ad5cf5eb38c5e36bceba493810044c2f1f597"
 webgoat_installtype: "native"
 webgoat_port: "8080"
 webwolf_port: "9090"
